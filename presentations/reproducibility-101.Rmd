@@ -292,7 +292,7 @@ library(data.table)
 
 ---
 
-# Package dependencies with renv
+# Package dependencies with `renv`
 
 What does this leave out?
 
@@ -315,10 +315,19 @@ Particularly for our kind of science-heavy packages we often depend on a *specif
       - we need a specific development version 😟
       
   
-Enter `renv`
+Enter `renv`!
 
 
 ---
+
+# Package dependencies with `renv`
+
+[`renv`](https://rstudio.github.io/renv/articles/renv.html) is a relatively new package manager solution from the folks at RStudio
+  - See Grant McDermott's [excellent talk](https://www.periscope.tv/grant_mcdermott/1lPJqLjlVAAGb)
+
+
+---
+
 
 # Collaboration through Git
 
