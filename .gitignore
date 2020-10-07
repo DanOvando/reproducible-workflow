@@ -1,8 +1,8 @@
 # results
 results/
-VAST*
 settings.txt
 packageDescription.txt
+VAST_*
 # History files
 .Rhistory
 .Rapp.history
