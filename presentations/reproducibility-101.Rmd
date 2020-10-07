@@ -1,0 +1,97 @@
+---
+title: "Reproducibility 101"
+subtitle: "Survey-centric R users group"
+author: "Dan Ovando"
+institute: "University of Washington"
+date: "2020/10/8"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(here)
+library(xaringan)
+library(TMB)
+library(VAST)
+```
+
+
+# We Have a Problem
+
+.center[
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/zwRdO9_GGhY?start=694" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+]
+
+---
+
+# We Have a Problem
+
+.center[
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/zwRdO9_GGhY?start=694" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+]
+
+---
+
+
+# Today's Content
+
+.pull-left[
+
+- Project Oriented Workflows
+
+- Resilient paths
+
+- Style guides
+
+- Package dependencies
+
+- Scientific collaboration with git + github
+
+
+].pull-right[
+
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.redbubble.com%2Fi%2Fart-print%2FFitter-Happier-and-More-Productive-by-Usul%2F24874247.1G4ZT&psig=AOvVaw0cY1wMloWpB-UoeizJ8AiV&ust=1602180536175000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOjX0-OJo-wCFQAAAAAdAAAAABAD
+
+
+
+]
+
+---
+
+
+# Style Guides
+
+---
+
+
+# Project-Oriented Workflow
+
+
+---
+
+
+# Exorcise the paths
+
+---
+
+# Package dependencies with renv
+
+---
+
+# Collaboration through Git
+
+---
+
+
+
+
+
+

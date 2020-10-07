@@ -1,9 +1,16 @@
+# results
+results/
+VAST*
+settings.txt
+packageDescription.txt
 # History files
 .Rhistory
 .Rapp.history
 
 # Session Data files
-.RData
+*.RData
+*.Rdata
+*.rds
 
 # User-specific files
 .Ruserdata
@@ -18,6 +25,7 @@
 /*.Rcheck/
 
 # RStudio files
+*.Rproj
 .Rproj.user/
 
 # produced vignettes
