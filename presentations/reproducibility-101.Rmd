@@ -541,3 +541,22 @@ Walk through it to see how it all fits together
 
 ---
 
+
+# In Summary....
+
+- Project oriented workflow
+  - Everything you need is contained nested folders, or downloaded by a script in a folder
+  - Can you turn your project into a zipfile?
+- Get rid of hard coded paths
+  - Barrier to future you and collaborators
+- Manage package dependencies
+  - Use something like renv
+- Generate dynamic reports with R Markdown
+  - where applicable
+- Collaborate with git + GitHub
+
+
+All materials can be accesed (and reproduced!) from github.com/danovando/https://github.com/DanOvando/reproducible-workflow
+
+
+---

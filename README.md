@@ -9,3 +9,8 @@
 
 reproducible-workflow is to minimal repository to demonstrate some core
 principles of reproducible workflows.
+
+Presentation available in presentations/reproducibility-101.Rmd
+
+Check out an example reproducible analysis by working through
+make-reprex.R
