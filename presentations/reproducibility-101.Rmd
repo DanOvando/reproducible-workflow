@@ -1,5 +1,5 @@
 ---
-title: "Reproducibility 101"
+title: "Making Reproducible Science"
 subtitle: "Survey-centric R users group"
 author: "Dan Ovando"
 institute: "University of Washington"
@@ -67,9 +67,9 @@ knitr::include_graphics("https://pbs.twimg.com/media/EjkVI4YWoAAXhxR?format=jpg&
 
 - Resilient paths
 
-- Style guides
-
 - Package dependencies
+
+- R Markdown
 
 - Scientific collaboration with git + github
 
@@ -87,6 +87,10 @@ knitr::include_graphics("https://journals.plos.org/plosbiology/article/figure/im
 
 
 class: center, inverse, middle
+
+
+
+class: center, middle, inverse
 # Science is all about reproducibility! 
 # Why should it stop at our code?
 
@@ -101,7 +105,15 @@ As code becomes our primary tool, need to apply the same reprodicibility rigorou
 ---
 
 
-# Project-Oriented Workflows
+class: center, middle, inverse
+
+# the point of all of this 
+
+# is to make your life easier
+
+---
+
+# [Project-Oriented Workflows](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/)
 
 >This convention guarantees that the project can be moved around on your computer or onto other computers and will still “just work” `r tufte::quote_footer('--- Jenny Bryan')`
 
@@ -112,9 +124,6 @@ As code becomes our primary tool, need to apply the same reprodicibility rigorou
 - All analysis written assuming
   - Fresh state
   - Working directory set to project directory
-
-
-
 ---
 
 # Project-Oriented Workflows
@@ -275,7 +284,7 @@ hake <- read.csv(here("data","hake.csv"))
 What about this?
 
 ```{r, error = TRUE}
-hake <- read.csv(here("home-folder","Place With all the_Data","hake.csv"))
+hake <- read.csv(here("home-folder","Place-With_Data","hake.csv"))
 ```
 
 
@@ -350,7 +359,7 @@ Enter `renv`!
 
 # Package dependencies with `renv`
 
-From a pure reproducibility standpoint this `renv` is great
+From a pure reproducibility standpoint `renv` is great
 
   - Prevents you from having to manually compile a list of dependencies to include in your scripts
   - Makes it easy to load your project on new computers
@@ -359,7 +368,7 @@ From a pure reproducibility standpoint this `renv` is great
 From a practical perspective has some very nice tricks
 
   - Every project has its own cache! No more "I don't update any packages because I need the ancient version of some specific package in order for my code to run"
-    - Can have `icesDatras` v1.3 in one projects and v1.0 in another
+    - Can have `icesDatras` v1.3 in one project and v1.0 in another
   - But, if it can share installs across projects it does so (saves on memory and install time)
 ---
 
@@ -382,7 +391,7 @@ Seems like this is a pretty full-proof path to reproducibility, except.....
 
 --
 
-Hardware. 
+Computer setup. 
 
 ---
 
@@ -407,7 +416,7 @@ Basically, Docker allows you to create a virtual machine on your computer that f
 - Has the compiler tools setup correctly
 - Has all the other things you need installed (e.g. libgdal)
 
-Docker won't save you from fundamental hardware problems (e.g. if a given program can only run on Windows)
+Docker won't save you from fundamental hardware problems (e.g. if a given program can only run on a PC)
   - Dedicated server + Docker...
   
 We don't have time to cover Docker here, and unfortunately it's a bit complicated.
@@ -429,7 +438,7 @@ Software development has a lot we can pull directly from to increase the reprodu
 
 But, there are a few places hijacking the software pipeline for science gets clunky
 
-I tend store push small-to-medium data with GitHub. [GitHub Large File Storage](https://docs.github.com/en/free-pro-team@latest/github/managing-large-files/about-git-large-file-storage) is also an option, but costs money 
+I push small-to-medium data to GitHub. [GitHub Large File Storage](https://docs.github.com/en/free-pro-team@latest/github/managing-large-files/about-git-large-file-storage) is also an option, but costs money 
   
 For Bigish data
   - Dropbox/google drive etc. are all fine options - you can query them all directly from R
@@ -460,6 +469,8 @@ Instead...
 
 3. Push code that produced results to GitHub, and created a named version
   - That way you can always recreate those exact results
+
+4. Coauthors should be able to recreate on their end!*
 
 ---
 
@@ -556,7 +567,7 @@ Walk through it to see how it all fits together
 - Collaborate with git + GitHub
 
 
-All materials can be accesed (and reproduced!) from github.com/danovando/https://github.com/DanOvando/reproducible-workflow
+All materials can be accessed (and reproduced!) [here](github.com/danovando/https://github.com/DanOvando/reproducible-workflow)
 
 
 ---
