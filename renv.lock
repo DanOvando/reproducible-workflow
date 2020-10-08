@@ -1055,8 +1055,8 @@
       "RemoteUsername": "danovando",
       "RemoteRepo": "sraplus",
       "RemoteRef": "master",
-      "RemoteSha": "e2ba70cda1616cd5b50e0cebba26c02dd9c0c752",
-      "Hash": "97a55bdc9e310db814c036b0e7017827"
+      "RemoteSha": "72fb94effc4699f98439e2ed79e9ed0977b66e78",
+      "Hash": "89e4ec562ca09a0354c1a754ad849580"
     },
     "statmod": {
       "Package": "statmod",
