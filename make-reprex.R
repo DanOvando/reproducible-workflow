@@ -96,6 +96,15 @@ output_format = c(
   "bookdown::word_document2"
 )
 
+if (any(grepl("pdf",output_format ))){
+  
+  if (tinytex::tinytex_root() == ""){
+    
+    tinytex::install_tinytex()
+  }
+  
+}
+
 # render reports
 rmarkdown::render(
   here::here("documents", "hake-report.Rmd"),
