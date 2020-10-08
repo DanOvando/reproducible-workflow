@@ -74,4 +74,13 @@ From there…
     option '-fopenmp'`, follow the instructions
     [here](https://thecoatlessprofessor.com/programming/r-compiler-tools-for-rcpp-on-macos/)
 
+Be sure to look for informative error messages. Both TMB and stan often
+cause install problems
+
+Check out their tips on installing
+
+<https://github.com/kaskr/adcomp/wiki/Download>
+
+<https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started>
+
 Once you’ve tried those, restart your computer and try
