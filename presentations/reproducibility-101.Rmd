@@ -26,10 +26,8 @@ library(dplyr)
 library(ggplot2)
 library(rstan)
 library(sraplus)
+library(bookdown)
 
-hake <- janitor::clean_names(read.table(here::here("data","schaefer.dat"), header=TRUE))
-
-write.csv(hake,here("data","hake.csv"))
 
 ```
 
@@ -45,8 +43,18 @@ write.csv(hake,here("data","hake.csv"))
 # We Have a Problem
 
 .center[
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/zwRdO9_GGhY?start=694" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zwRdO9_GGhY?start=2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ]
+
+---
+
+# We Have a Problem
+
+```{r, echo = FALSE, out.width="80%"}
+knitr::include_graphics("https://pbs.twimg.com/media/EjkVI4YWoAAXhxR?format=jpg&name=medium")
+```
+
+
 
 ---
 
@@ -68,9 +76,9 @@ write.csv(hake,here("data","hake.csv"))
 
 ].pull-right[
 
-https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.redbubble.com%2Fi%2Fart-print%2FFitter-Happier-and-More-Productive-by-Usul%2F24874247.1G4ZT&psig=AOvVaw0cY1wMloWpB-UoeizJ8AiV&ust=1602180536175000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOjX0-OJo-wCFQAAAAAdAAAAABAD
-
-
+```{r, echo = FALSE, out.width="80%"}
+knitr::include_graphics("https://journals.plos.org/plosbiology/article/figure/image?size=large&id=10.1371/journal.pbio.3000763.g003")
+```
 
 ]
 
@@ -179,12 +187,12 @@ see [Good Enough Practices in Scientific Computing](https://journals.plos.org/pl
 Using RStudio is a simple way around this
   
   - Create .Rproj file in the root directory of your project
+  - I recommend ignoring these in your.gitignore file
   
 Alternatively...
  
   - Often just open a file in the project directory with R GUI/Atom/Whatever
   
-
   - If that fails, use `cd` / `setwd` from the command line/console (not in your script) when you open your analysis
   
   - `here` will often do the job for you
@@ -264,6 +272,13 @@ Works on any platform and from anywhere in the project!
 hake <- read.csv(here("data","hake.csv"))
 ```
 
+What about this?
+
+```{r, error = TRUE}
+hake <- read.csv(here("home-folder","Place With all the_Data","hake.csv"))
+```
+
+
 ---
 
 # Package dependencies with renv
@@ -277,18 +292,16 @@ hake <- as.data.table(hake)
 
 ```
 
-Packages are a huge part of reproducibility - even the most "base or bust!" code usually has some package dependencies
+Packages are a huge part of reproducibility - even the most "base or bust!" code usually has some package dependencies, and of course base R itself changes
+  - R 4.0 = no more `stringsAsFactors = FALSE`!!
 
 - Minimum solution: include ***all*** needed libraries at the start of your main script
 
 ```{r, eval = FALSE}
-
 # my amazing wrapper scripts ----------------
-
 # load libraries
 library(here)
 library(data.table)
-
 ```
 
 ---
@@ -315,41 +328,216 @@ Particularly for our kind of science-heavy packages we often depend on a *specif
       - we need an older version
       - we need a specific development version 😟
       
-  
 Enter `renv`!
-
 
 ---
 
 # Package dependencies with `renv`
 
 [`renv`](https://rstudio.github.io/renv/articles/renv.html) is a relatively new package manager solution from the folks at RStudio
-  - See Grant McDermott's [excellent talk] on it (https://www.periscope.tv/grant_mcdermott/1lPJqLjlVAAGb)
+  - See Grant McDermott's [excellent talk](https://www.periscope.tv/grant_mcdermott/1lPJqLjlVAAGb) on it
 
 
+`renv` basically takes snapshots of
+
+  - the packages used in a project
+  - the dependencies of those packages
+  - the versions as of install time of all packages and dependencies
+    - including the source!
+  - Support for CRAN, bioconductor, github, etc. 
 
 ---
 
+# Package dependencies with `renv`
 
-# Collaboration through Git
+From a pure reproducibility standpoint this `renv` is great
 
+  - Prevents you from having to manually compile a list of dependencies to include in your scripts
+  - Makes it easy to load your project on new computers
+  - Can be used as a package version time machine!
+
+From a practical perspective has some very nice tricks
+
+  - Every project has its own cache! No more "I don't update any packages because I need the ancient version of some specific package in order for my code to run"
+    - Can have `icesDatras` v1.3 in one projects and v1.0 in another
+  - But, if it can share installs across projects it does so (saves on memory and install time)
 ---
 
-# Parameterized Markdown Reports
+# `renv` in action
 
+Break to see how `renv` can reproduce a complicated package on a new computer
 
 ---
 
 # Docker
 
+So, we've
+
+- Created a project-oriented workflow
+- Gotten rid of `setwd` and any hard-coded paths
+- Used `renv` to manage our package dependencies
+- **RESTARTED R AND MADE SURE THAT EVERYTHING RUNS**
+
+Seems like this is a pretty full-proof path to reproducibility, except.....
+
+--
+
+Hardware. 
+
+---
+
+# Docker
+
+Even if you have all the packages and file paths right, you need a computer to run code. 
+
+`renv` & friends don't
+
+  - Make sure you have R installed
+  - Have the correct compiler tools set up
+  - Ensure you have the right support applications installed (e.g. libgdal)
+  
+This is where [Docker](https://www.docker.com/) and virtual machines come in
+  
+---
+
+# Docker
+
+Basically, Docker allows you to create a virtual machine on your computer that for example
+- Has R installed
+- Has the compiler tools setup correctly
+- Has all the other things you need installed (e.g. libgdal)
+
+Docker won't save you from fundamental hardware problems (e.g. if a given program can only run on Windows)
+  - Dedicated server + Docker...
+  
+We don't have time to cover Docker here, and unfortunately it's a bit complicated.
+  - Worth it if you're writing complicated code that needs to be reproduced on a wide variety of machines
+  - Otherwise, I'd stick with the workflow outlined here, but inclued clear instructions in the project README detailing all the non-R steps that need to be taken
 
 ---
 
 
-# Style Guides
+class: center, middle, inverse
+
+# Putting things into practice
+
+---
+
+# What to do about Data?
+
+Software development has a lot we can pull directly from to increase the reproducibility of our research
+
+But, there are a few places hijacking the software pipeline for science gets clunky
+
+I tend store push small-to-medium data with GitHub. [GitHub Large File Storage](https://docs.github.com/en/free-pro-team@latest/github/managing-large-files/about-git-large-file-storage) is also an option, but costs money 
+  
+For Bigish data
+  - Dropbox/google drive etc. are all fine options - you can query them all directly from R
+  - I usually have a check in my code to see if it's already downloaded and if not, download unzip etc. 
+  - But, a bit fragile (permissions, changing paths, etc.)
+  - Particularly for publication, generating a DOI with figshare/zenodo is a great and stable option
+  
+For Big data
+  - i.e. you can't hold it or work with it all at onces on a reasonable computer
+  - I recommend gpogle [BigQuery](https://cloud.google.com/bigquery/)
+  
+---
+
+# What to do about Results?
+
+Data are at least (in theory) static. What do we do about results?
+
+I've yet to come up with a solution that I'm really happy with, but here's my strategy
+
+1. Create an automated system to version and store results ***locally***
+  - e.g. this run is named "v1.0"
+2. I try and avoid committing results to GitHub
+  - Easy to create conflicts
+  - Takes up a lot of space
+  - Runs contrary to the entire point of reproducibility - if I do my job right future me or any collaborator can recreate the results on their own machine
+  
+Instead...
+
+3. Push code that produced results to GitHub, and created a named version
+  - That way you can always recreate those exact results
+
+---
+
+# Parameterized Markdown Reports
+
+Papers are kind of a thing in science. We've made this amazing reproducible workflow to get numbers and graphs, but they don't pay the bills. 
+
+How do we make sure that our final paper is reproducible?
+  - Asking your students to go through your word doc and update all the coefficients by hand doesn't count
+
+Enter R Markdown
+
+---
+
+# R Markdown
+
+We don't have time to learn R Markdown, but here's the sales pitch
+
+  - Automatically update all figures and tables as results change
+  - Automatically update all in-text numbers as results change
+  - Automatically number figures and tables as you move them around
+    - Updates cross-references in the text
+  - Automatically format and update references with your favorite reference manager
+    - Rejected by Science? Just change the citation format, knit, and it's off to the next journal
+
+Produce, PDF, Word, or HTML all from the same source material
+  - Use Markdown, LaTeX, or Word templates to customize formatting
+  - Generates all LaTeX files
+    
+
+---
+
+# Collaborative Editing R Markdown
+
+R Markdown sounds great! But..... **what about track changes**
+
+I decide which way to go based on nature of paper
+  - Literature review with 40 authors? R markdown is probably not the way to go. 
+  
+The (ideal) R Markdown Editing process
+
+- Editor creates a branch off the main branch ("dans-edits")
+- Makes changes, submits pull request
+- Editor and lead author / team go through and approve / reject changes
+- Merge "dans-edits" back ino main branch
+
+Sounds hard, but honestly with practice it's easier than
+  - Email .docx to 40 people
+  - Get various versions of .docx and .pdf files back all with individual authors changes (some of which are on top of other people's changes)
+  - Spend the next three nights crying with a bottle of whiskey while you try and reconcile it all
+  - repeat. 
 
 
 ---
 
 
+# My Publication-Oriented Workflow
+
+1. Do all the things we've talked about
+
+2. Place all functions inside a "functions" folder
+
+3. Create a wrapper script (make-my-paper.R) that calls everything needed to produce results
+
+4. Specify results name inside wrapper script
+
+5. pass parameters to R Markdown inside wrapper script and knit final product
+
+
+---
+
+
+
+# Let's see it in action
+
+running `make-reprex.R` will run through this whole process. 
+
+Walk through it to see how it all fits together
+
+---
 

@@ -108,9 +108,15 @@
     "TMB": {
       "Package": "TMB",
       "Version": "1.7.18",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "1500330bbd3c378400d65a5010aa7ce5"
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "adcomp",
+      "RemoteUsername": "kaskr",
+      "RemoteRef": "quote_path",
+      "RemoteSha": "4e5c76dcd7d6822ad635a8823abb2079461fe8c4",
+      "RemoteSubdir": "TMB",
+      "Hash": "cee0002c75c973672485f50d020b928e"
     },
     "TMBhelper": {
       "Package": "TMBhelper",
@@ -185,6 +191,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "e2835c474c3bd9f2bbc3a5adf804254f"
+    },
+    "bookdown": {
+      "Package": "bookdown",
+      "Version": "0.20",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "31ed5641f4a91cf113de490e0bb006b8"
     },
     "boot": {
       "Package": "boot",
@@ -1042,8 +1055,8 @@
       "RemoteUsername": "danovando",
       "RemoteRepo": "sraplus",
       "RemoteRef": "master",
-      "RemoteSha": "d44eec50a52db9026582f543d03722d4a2651db5",
-      "Hash": "114dd6ada5df35855911431e633a224b"
+      "RemoteSha": "e2ba70cda1616cd5b50e0cebba26c02dd9c0c752",
+      "Hash": "97a55bdc9e310db814c036b0e7017827"
     },
     "statmod": {
       "Package": "statmod",

@@ -3,6 +3,7 @@ results/
 settings.txt
 packageDescription.txt
 VAST_*
+sraplus_tmb*
 # History files
 .Rhistory
 .Rapp.history
