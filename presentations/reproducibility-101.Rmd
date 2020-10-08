@@ -1,6 +1,6 @@
 ---
-title: "Making Reproducible Science"
-subtitle: "Survey-centric R users group"
+title: "Making Science Reproducible"
+subtitle: "NOAA Survey-centric R users group"
 author: "Dan Ovando"
 institute: "University of Washington"
 date: "2020/10/8"
@@ -8,7 +8,7 @@ output:
   xaringan::moon_reader:
     lib_dir: libs
     nature:
-      highlightStyle: github
+      highlightStyle: dark
       highlightLines: true
       countIncrementalSlides: false
 ---
@@ -45,16 +45,6 @@ library(bookdown)
 .center[
 <iframe width="560" height="315" src="https://www.youtube.com/embed/zwRdO9_GGhY?start=2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ]
-
----
-
-# We Have a Problem
-
-```{r, echo = FALSE, out.width="80%"}
-knitr::include_graphics("https://pbs.twimg.com/media/EjkVI4YWoAAXhxR?format=jpg&name=medium")
-```
-
-
 
 ---
 
@@ -132,6 +122,34 @@ see [Good Enough Practices in Scientific Computing](https://journals.plos.org/pl
 
 & 
  
+---
+
+# Git and GitHub are Great
+
+.pull-left[
+
+  - Make getting to the final product easier and safer
+  - Allow others to easily use your results
+  - Allows you to easily version your results
+  
+From a pure *reproducibility* perspective though, not strictly needed
+
+- Could use email/dropbox/whatever to manage all your versions
+
+- Publish the final reproducible code and results to say figshare without git/GitHub
+
+So, we're not going to focus on git here today
+  
+
+
+].pull-right[
+
+```{r out.width = '100%', echo = FALSE}
+knitr::include_graphics("http://swcarpentry.github.io/git-novice/fig/phd101212s.png") 
+```
+]
+
+
 ---
 
 
@@ -567,7 +585,9 @@ Walk through it to see how it all fits together
 - Collaborate with git + GitHub
 
 
-All materials can be accessed (and reproduced!) [here](github.com/danovando/https://github.com/DanOvando/reproducible-workflow)
+All materials can be accessed (and reproduced!) here https://github.com/DanOvando/reproducible-workflow
+
+Presentation can be viewed at https://danovando.github.io/reproducible-workflow/presentations/reproducibility-101#1
 
 
 ---
