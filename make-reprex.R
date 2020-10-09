@@ -92,7 +92,7 @@ saveRDS(hake_results, file = file.path(results_path, "hake-results.rds")) # save
 # specify output formats for reports
 output_format = c(
   "bookdown::html_document2",
-  "bookdown::pdf_document2"
+  "bookdown::pdf_document2",
   "bookdown::word_document2"
 )
 

@@ -441,6 +441,7 @@ We don't have time to cover Docker here, and unfortunately it's a bit complicate
   - Worth it if you're writing complicated code that needs to be reproduced on a wide variety of machines
   - Otherwise, I'd stick with the workflow outlined here, but inclued clear instructions in the project README detailing all the non-R steps that need to be taken
 
+
 ---
 
 
